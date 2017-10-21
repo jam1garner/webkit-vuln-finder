@@ -15,6 +15,7 @@ with open('bad_bugs_from_commits.txt', 'w') as f:
         if match:
             with urllib.request.urlopen('https://'+match.group()) as response:
                 if response.read().find(b'You are not authorized to access bug') != -1:
-                    print("Commit %s, webkit bug: %s" % (commit.url.replace('api.github.com/repos', 'www.github.com').replace('commits', 'commit'), 'https://'+match.group()))
-                    print("Commit %s, webkit bug: %s" % (commit.url.replace('api.github.com/repos', 'www.github.com').replace('commits', 'commit'), 'https://'+match.group()), file=f)
+                    printMessage = "Commit %s, webkit bug: %s" % (commit.url.replace('api.github.com/repos', 'www.github.com').replace('commits', 'commit'), 'https://'+match.group())
+                    print(printMessage)
+                    print(printMessage, file=f)
                     f.flush()
